@@ -1,0 +1,90 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '9.0.x'
+
+      - name: Build
+        run: dotnet build -c Release
+
+      - name: Get version
+        id: version
+        run: echo "VERSION=${GITHUB_REF_NAME#v}" >> $GITHUB_OUTPUT
+
+      - name: Create plugin zip
+        run: |
+          mkdir -p dist
+          cp bin/Release/net9.0/Jellyfin.Plugin.SubtitleCat.dll dist/
+          cp meta.json dist/
+          cd dist && zip -j ../Jellyfin.Plugin.SubtitleCat_${{ steps.version.outputs.VERSION }}.zip ./*
+
+      - name: Compute checksum
+        id: checksum
+        run: |
+          MD5=$(md5sum Jellyfin.Plugin.SubtitleCat_${{ steps.version.outputs.VERSION }}.zip | awk '{print $1}')
+          echo "MD5=$MD5" >> $GITHUB_OUTPUT
+
+      - name: Update manifest.json
+        run: |
+          python3 - <<'EOF'
+          import json, os
+          version = os.environ['VERSION']
+          md5 = os.environ['MD5']
+          repo = os.environ['GITHUB_REPOSITORY']
+          url = f"https://github.com/{repo}/releases/download/v{version}/Jellyfin.Plugin.SubtitleCat_{version}.zip"
+
+          with open('manifest.json') as f:
+              manifest = json.load(f)
+
+          new_version = {
+              "checksum": md5,
+              "changelog": f"Release {version}",
+              "targetAbi": "10.11.0.0",
+              "sourceUrl": url,
+              "timestamp": "2026-05-14T00:00:00Z",
+              "version": version
+          }
+
+          # Prepend new version (keep history)
+          manifest[0]['versions'].insert(0, new_version)
+
+          with open('manifest.json', 'w') as f:
+              json.dump(manifest, f, indent=2)
+          EOF
+        env:
+          VERSION: ${{ steps.version.outputs.VERSION }}
+          MD5: ${{ steps.checksum.outputs.MD5 }}
+
+      - name: Commit updated manifest
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add manifest.json
+          git commit -m "Update manifest for v${{ steps.version.outputs.VERSION }}"
+          git push origin HEAD:main
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: Jellyfin.Plugin.SubtitleCat_${{ steps.version.outputs.VERSION }}.zip
+          body: |
+            ## SubtitleCat Plugin v${{ steps.version.outputs.VERSION }}
+
+            ### Installation
+            Download the zip and extract to your Jellyfin plugins folder:
+            `<JellyfinData>/plugins/SubtitleCat_${{ steps.version.outputs.VERSION }}.0/`
+
+            Or add the manifest URL to Jellyfin → Dashboard → Plugins → Repositories:
+            `https://raw.githubusercontent.com/vicvinue/jellyfin-plugin-subtitlecat/main/manifest.json`

@@ -1,0 +1,15 @@
+{
+  "category": "Subtitles",
+  "changelog": "Initial release",
+  "description": "Download subtitles from SubtitleCat (subtitlecat.com). No API key required. Supports movies and TV episodes.",
+  "guid": "a2b3c4d5-e6f7-8901-bcde-f01234567890",
+  "name": "SubtitleCat",
+  "overview": "Subtitle provider for subtitlecat.com",
+  "owner": "vicvinue",
+  "targetAbi": "10.11.0.0",
+  "timestamp": "2026-05-14T00:00:00.0000000Z",
+  "version": "1.0.0",
+  "status": "Active",
+  "autoUpdate": false,
+  "assemblies": ["Jellyfin.Plugin.SubtitleCat.dll"]
+}

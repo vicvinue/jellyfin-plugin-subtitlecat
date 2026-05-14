@@ -1,0 +1,12 @@
+[
+  {
+    "category": "Subtitles",
+    "guid": "a2b3c4d5-e6f7-8901-bcde-f01234567890",
+    "imageUrl": "",
+    "name": "SubtitleCat",
+    "description": "Download subtitles from SubtitleCat (subtitlecat.com). No API key required.",
+    "overview": "Subtitle provider for subtitlecat.com. Supports movies and TV episodes.",
+    "owner": "vicvinue",
+    "versions": []
+  }
+]
