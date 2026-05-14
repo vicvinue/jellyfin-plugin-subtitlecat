@@ -61,7 +61,7 @@ public class SubtitleCatProvider : ISubtitleProvider
         _httpClientFactory = httpClientFactory;
     }
 
-    public string Name => "SubtitleCat";
+    public string Name => "SubMichi";
 
     public IEnumerable<VideoContentType> SupportedMediaTypes =>
         new[] { VideoContentType.Movie, VideoContentType.Episode };

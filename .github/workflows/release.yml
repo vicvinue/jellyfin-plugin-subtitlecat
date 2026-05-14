@@ -79,6 +79,8 @@ jobs:
               "version": version
           }
 
+          manifest[0]["guid"] = "b3c4d5e6-f7a8-9012-cdef-012345678901"
+          manifest[0]["name"] = "SubMichi"
           manifest[0]["owner"] = "vicvinue"
           manifest[0]["imageUrl"] = f"https://raw.githubusercontent.com/{repo}/main/icon.png"
 

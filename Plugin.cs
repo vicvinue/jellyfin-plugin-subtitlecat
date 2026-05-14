@@ -14,9 +14,9 @@ public class Plugin : BasePlugin<BasePluginConfiguration>
         Instance = this;
     }
 
-    public override string Name => "SubtitleCat";
-    public override Guid Id => new Guid("a2b3c4d5-e6f7-8901-bcde-f01234567890");
-    public override string Description => "Download subtitles from SubtitleCat (subtitlecat.com)";
+    public override string Name => "SubMichi";
+    public override Guid Id => new Guid("b3c4d5e6-f7a8-9012-cdef-012345678901");
+    public override string Description => "Descarga subtítulos desde SubtitleCat (subtitlecat.com)";
 
     public static Plugin? Instance { get; private set; }
 }
