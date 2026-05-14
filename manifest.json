@@ -4,9 +4,18 @@
     "guid": "b3c4d5e6-f7a8-9012-cdef-012345678901",
     "imageUrl": "https://raw.githubusercontent.com/vicvinue/jellyfin-plugin-subtitlecat/main/icon.png",
     "name": "SubMichi",
-    "description": "Descarga subtítulos desde SubtitleCat (subtitlecat.com). Sin API key.",
-    "overview": "Proveedor de subtítulos para subtitlecat.com. Compatible con películas y series.",
+    "description": "Descarga subt\u00edtulos desde SubtitleCat (subtitlecat.com). Sin API key.",
+    "overview": "Proveedor de subt\u00edtulos para subtitlecat.com. Compatible con pel\u00edculas y series.",
     "owner": "vicvinue",
-    "versions": []
+    "versions": [
+      {
+        "checksum": "4d52f20da153fc8e8af1f4bf9ae27321",
+        "changelog": "Release 1.1.0",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/vicvinue/jellyfin-plugin-subtitlecat/releases/download/v1.1.0/Jellyfin.Plugin.SubtitleCat_1.1.0.zip",
+        "timestamp": "2026-05-14T00:00:00Z",
+        "version": "1.1.0"
+      }
+    ]
   }
 ]
