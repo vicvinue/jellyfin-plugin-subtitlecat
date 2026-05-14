@@ -6,7 +6,7 @@
     "name": "SubtitleCat",
     "description": "Download subtitles from SubtitleCat (subtitlecat.com). No API key required.",
     "overview": "Subtitle provider for subtitlecat.com. Supports movies and TV episodes.",
-    "owner": "chumbeque",
+    "owner": "vicvinue",
     "versions": [
       {
         "checksum": "b07c25c337ac4f492f7a96b0c55e7b00",
