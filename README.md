@@ -1,6 +1,6 @@
-# Jellyfin Plugin — SubtitleCat
+# SubMichi — Plugin de Subtítulos para Jellyfin
 
-Plugin de subtítulos para [Jellyfin](https://jellyfin.org) que descarga subtítulos desde [subtitlecat.com](https://www.subtitlecat.com).
+Plugin para [Jellyfin](https://jellyfin.org) que descarga subtítulos desde [subtitlecat.com](https://www.subtitlecat.com).
 
 - Sin API key ni registro requerido
 - Compatible con películas y episodios de series
@@ -15,7 +15,7 @@ Plugin de subtítulos para [Jellyfin](https://jellyfin.org) que descarga subtít
    ```
    https://raw.githubusercontent.com/vicvinue/jellyfin-plugin-subtitlecat/main/manifest.json
    ```
-3. Ve al **Catálogo**, busca **SubtitleCat** e instálalo
+3. Ve al **Catálogo**, busca **SubMichi** e instálalo
 4. Reinicia Jellyfin
 
 ### Manual
@@ -23,7 +23,7 @@ Plugin de subtítulos para [Jellyfin](https://jellyfin.org) que descarga subtít
 1. Descarga el zip más reciente desde [Releases](https://github.com/vicvinue/jellyfin-plugin-subtitlecat/releases)
 2. Extrae el contenido en la carpeta de plugins de Jellyfin:
    ```
-   <JellyfinData>/plugins/SubtitleCat_1.0.0.0/
+   <JellyfinData>/plugins/SubMichi_1.1.0.0/
    ```
 3. Reinicia Jellyfin
 
