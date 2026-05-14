@@ -18,19 +18,39 @@ jobs:
         with:
           dotnet-version: '9.0.x'
 
-      - name: Build
-        run: dotnet build -c Release
-
       - name: Get version
         id: version
         run: echo "VERSION=${GITHUB_REF_NAME#v}" >> $GITHUB_OUTPUT
 
-      - name: Create plugin zip
+      - name: Set assembly version
         run: |
+          VERSION=${{ steps.version.outputs.VERSION }}
+          ASMVER="${VERSION}.0"
+          sed -i "s|<AssemblyVersion>.*</AssemblyVersion>|<AssemblyVersion>${ASMVER}</AssemblyVersion>|" Jellyfin.Plugin.SubtitleCat.csproj
+          sed -i "s|<FileVersion>.*</FileVersion>|<FileVersion>${ASMVER}</FileVersion>|" Jellyfin.Plugin.SubtitleCat.csproj
+          sed -i "s|<Version>.*</Version>|<Version>${VERSION}</Version>|" Jellyfin.Plugin.SubtitleCat.csproj
+
+      - name: Build
+        run: dotnet build -c Release
+
+      - name: Prepare plugin zip
+        run: |
+          VERSION=${{ steps.version.outputs.VERSION }}
+          REPO=${{ github.repository }}
           mkdir -p dist
           cp bin/Release/net9.0/Jellyfin.Plugin.SubtitleCat.dll dist/
-          cp meta.json dist/
-          cd dist && zip -j ../Jellyfin.Plugin.SubtitleCat_${{ steps.version.outputs.VERSION }}.zip ./*
+          cp icon.png dist/
+          # Update meta.json with correct version and repositoryUrl
+          python3 - <<EOF
+          import json
+          with open('meta.json') as f:
+              meta = json.load(f)
+          meta['version'] = '${VERSION}'
+          meta['repositoryUrl'] = 'https://raw.githubusercontent.com/${REPO}/main/manifest.json'
+          with open('dist/meta.json', 'w') as f:
+              json.dump(meta, f, indent=2)
+          EOF
+          cd dist && zip -j ../Jellyfin.Plugin.SubtitleCat_${VERSION}.zip ./*
 
       - name: Compute checksum
         id: checksum
@@ -62,7 +82,6 @@ jobs:
           manifest[0]["owner"] = "vicvinue"
           manifest[0]["imageUrl"] = f"https://raw.githubusercontent.com/{repo}/main/icon.png"
 
-          # Prepend new version (keep history)
           manifest[0]['versions'].insert(0, new_version)
 
           with open('manifest.json', 'w') as f:
@@ -87,9 +106,9 @@ jobs:
           body: |
             ## SubtitleCat Plugin v${{ steps.version.outputs.VERSION }}
 
-            ### Installation
-            Download the zip and extract to your Jellyfin plugins folder:
-            `<JellyfinData>/plugins/SubtitleCat_${{ steps.version.outputs.VERSION }}.0/`
-
-            Or add the manifest URL to Jellyfin → Dashboard → Plugins → Repositories:
+            ### Instalación
+            Agrega el repositorio en Jellyfin → Panel de control → Complementos → Repositorios:
             `https://raw.githubusercontent.com/vicvinue/jellyfin-plugin-subtitlecat/main/manifest.json`
+
+            O descarga el zip y extrae en la carpeta de plugins de Jellyfin:
+            `<JellyfinData>/plugins/SubtitleCat_${{ steps.version.outputs.VERSION }}.0/`
