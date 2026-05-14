@@ -59,6 +59,9 @@ jobs:
               "version": version
           }
 
+          manifest[0]["owner"] = "vicvinue"
+          manifest[0]["imageUrl"] = f"https://raw.githubusercontent.com/{repo}/main/icon.png"
+
           # Prepend new version (keep history)
           manifest[0]['versions'].insert(0, new_version)
 
