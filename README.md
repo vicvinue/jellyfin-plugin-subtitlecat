@@ -1,37 +1,37 @@
-# SubMichi — Plugin de Subtítulos para Jellyfin
+# SubMichi — Jellyfin Subtitle Plugin
 
-Plugin para [Jellyfin](https://jellyfin.org) que descarga subtítulos desde [subtitlecat.com](https://www.subtitlecat.com).
+Subtitle provider plugin for [Jellyfin](https://jellyfin.org) that downloads subtitles from [subtitlecat.com](https://www.subtitlecat.com).
 
-- Sin API key ni registro requerido
-- Compatible con películas y episodios de series
-- Más de 30 idiomas: español, inglés, portugués, francés, alemán y más
+- No API key or registration required
+- Supports movies and TV episodes
+- 30+ languages including Spanish, English, Portuguese, French, German and more
 
-## Instalación
+## Installation
 
-### Desde repositorio (recomendado)
+### Via Plugin Repository (recommended)
 
-1. En Jellyfin ve a **Panel de control → Complementos → Repositorios**
-2. Agrega esta URL:
+1. In Jellyfin go to **Dashboard → Plugins → Repositories**
+2. Add this URL:
    ```
    https://raw.githubusercontent.com/vicvinue/jellyfin-plugin-subtitlecat/main/manifest.json
    ```
-3. Ve al **Catálogo**, busca **SubMichi** e instálalo
-4. Reinicia Jellyfin
+3. Go to **Catalog**, find **SubMichi** and install it
+4. Restart Jellyfin
 
 ### Manual
 
-1. Descarga el zip más reciente desde [Releases](https://github.com/vicvinue/jellyfin-plugin-subtitlecat/releases)
-2. Extrae el contenido en la carpeta de plugins de Jellyfin:
+1. Download the latest zip from [Releases](https://github.com/vicvinue/jellyfin-plugin-subtitlecat/releases)
+2. Extract to your Jellyfin plugins folder:
    ```
    <JellyfinData>/plugins/SubMichi_1.1.0.0/
    ```
-3. Reinicia Jellyfin
+3. Restart Jellyfin
 
-## Requisitos
+## Requirements
 
-- Jellyfin 10.11 o superior
-- .NET 9 (incluido en la imagen Docker oficial de Jellyfin)
+- Jellyfin 10.11 or later
+- .NET 9 runtime (included in the Jellyfin Docker image)
 
-## Licencia
+## License
 
 MIT
