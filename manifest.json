@@ -9,6 +9,14 @@
     "owner": "vicvinue",
     "versions": [
       {
+        "checksum": "d804537b2e45d5b51969666fec1525b7",
+        "changelog": "Release 1.2.0",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/vicvinue/jellyfin-plugin-subtitlecat/releases/download/v1.2.0/Jellyfin.Plugin.SubtitleCat_1.2.0.zip",
+        "timestamp": "2026-05-14T00:00:00Z",
+        "version": "1.2.0"
+      },
+      {
         "checksum": "4d52f20da153fc8e8af1f4bf9ae27321",
         "changelog": "Release 1.1.0",
         "targetAbi": "10.11.0.0",
