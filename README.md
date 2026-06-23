@@ -1,5 +1,7 @@
 # SubMichi — Jellyfin Subtitle Plugin
 
+**English** | [Español](README.es.md)
+
 Subtitle provider plugin for [Jellyfin](https://jellyfin.org) that downloads subtitles from [subtitlecat.com](https://www.subtitlecat.com).
 
 - No API key or registration required
