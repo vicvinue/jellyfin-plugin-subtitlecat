@@ -4,7 +4,11 @@ Subtitle provider plugin for [Jellyfin](https://jellyfin.org) that downloads sub
 
 - No API key or registration required
 - Supports movies and TV episodes
-- 30+ languages including Spanish, English, Portuguese, French, German and more
+- 30+ languages including Spanish (incl. Latin American `es-419`), English, Portuguese, French, German and more
+
+## How it works
+
+subtitlecat.com indexes subtitles by **release name**, not by localized title or IMDB id. Because Jellyfin may pass a localized title to providers (e.g. *"Letras Robadas"* instead of *"Power Ballad"*), the plugin builds its search query from the media **file name** — trimmed to the year for movies (`Power Ballad 2026`) or to the `SxxExx` token for episodes (`Show Name S01E02`) — and falls back to the metadata title if the file name yields nothing.
 
 ## Installation
 
@@ -23,7 +27,7 @@ Subtitle provider plugin for [Jellyfin](https://jellyfin.org) that downloads sub
 1. Download the latest zip from [Releases](https://github.com/vicvinue/jellyfin-plugin-subtitlecat/releases)
 2. Extract to your Jellyfin plugins folder:
    ```
-   <JellyfinData>/plugins/SubMichi_1.1.0.0/
+   <JellyfinData>/plugins/SubMichi_1.2.0.0/
    ```
 3. Restart Jellyfin
 
