@@ -1,43 +1,43 @@
-# SubMichi — Jellyfin Subtitle Plugin
+# SubMichi — Plugin de Subtítulos para Jellyfin
 
-**English** | [Español](README.es.md)
+**Español** | [English](README.en.md)
 
-Subtitle provider plugin for [Jellyfin](https://jellyfin.org) that downloads subtitles from [subtitlecat.com](https://www.subtitlecat.com).
+Plugin proveedor de subtítulos para [Jellyfin](https://jellyfin.org) que descarga subtítulos desde [subtitlecat.com](https://www.subtitlecat.com).
 
-- No API key or registration required
-- Supports movies and TV episodes
-- 30+ languages including Spanish (incl. Latin American `es-419`), English, Portuguese, French, German and more
+- No requiere API key ni registro
+- Compatible con películas y episodios de series
+- Más de 30 idiomas, incluido español (incl. latinoamericano `es-419`), inglés, portugués, francés, alemán y más
 
-## How it works
+## Cómo funciona
 
-subtitlecat.com indexes subtitles by **release name**, not by localized title or IMDB id. Because Jellyfin may pass a localized title to providers (e.g. *"Letras Robadas"* instead of *"Power Ballad"*), the plugin builds its search query from the media **file name** — trimmed to the year for movies (`Power Ballad 2026`) or to the `SxxExx` token for episodes (`Show Name S01E02`) — and falls back to the metadata title if the file name yields nothing.
+subtitlecat.com indexa los subtítulos por **nombre de release**, no por el título localizado ni por el id de IMDB. Como Jellyfin puede pasar un título localizado a los proveedores (por ejemplo *"Letras Robadas"* en lugar de *"Power Ballad"*), el plugin construye la búsqueda a partir del **nombre del archivo** — recortado hasta el año en películas (`Power Ballad 2026`) o hasta el token `SxxExx` en episodios (`Show Name S01E02`) — y recurre al título de los metadatos solo si el nombre del archivo no devuelve resultados.
 
-## Installation
+## Instalación
 
-### Via Plugin Repository (recommended)
+### Vía repositorio de plugins (recomendado)
 
-1. In Jellyfin go to **Dashboard → Plugins → Repositories**
-2. Add this URL:
+1. En Jellyfin ve a **Panel de control → Complementos → Repositorios**
+2. Agrega esta URL:
    ```
    https://raw.githubusercontent.com/vicvinue/jellyfin-plugin-subtitlecat/main/manifest.json
    ```
-3. Go to **Catalog**, find **SubMichi** and install it
-4. Restart Jellyfin
+3. Ve a **Catálogo**, busca **SubMichi** e instálalo
+4. Reinicia Jellyfin
 
 ### Manual
 
-1. Download the latest zip from [Releases](https://github.com/vicvinue/jellyfin-plugin-subtitlecat/releases)
-2. Extract to your Jellyfin plugins folder:
+1. Descarga el último zip desde [Releases](https://github.com/vicvinue/jellyfin-plugin-subtitlecat/releases)
+2. Extrae en la carpeta de plugins de Jellyfin:
    ```
    <JellyfinData>/plugins/SubMichi_1.2.0.0/
    ```
-3. Restart Jellyfin
+3. Reinicia Jellyfin
 
-## Requirements
+## Requisitos
 
-- Jellyfin 10.11 or later
-- .NET 9 runtime (included in the Jellyfin Docker image)
+- Jellyfin 10.11 o superior
+- Runtime de .NET 9 (incluido en la imagen Docker de Jellyfin)
 
-## License
+## Licencia
 
 MIT
